@@ -755,6 +755,8 @@ static int mdss_dsi_post_panel_on(struct mdss_panel_data *pdata)
 			goto end;
 	}
 
+	mdss_livedisplay_update(ctrl, MODE_UPDATE_ALL);
+
 	on_cmds = &ctrl->post_panel_on_cmds;
 
 	pr_debug("%s: ctrl=%pK cmd_cnt=%d\n", __func__, ctrl, on_cmds->cmd_cnt);
@@ -770,8 +772,6 @@ static int mdss_dsi_post_panel_on(struct mdss_panel_data *pdata)
 		msleep(vsync_period);
 		mdss_dba_utils_hdcp_enable(pinfo->dba_data, true);
 	}
-
-	mdss_livedisplay_update(ctrl, MODE_UPDATE_ALL);
 
 end:
 	pr_debug("%s:-\n", __func__);
