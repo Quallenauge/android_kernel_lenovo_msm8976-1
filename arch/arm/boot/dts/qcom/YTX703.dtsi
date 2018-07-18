@@ -273,6 +273,9 @@
 		qcom,mdss-dsi-v-back-porch  = <24>;
 		qcom,mdss-dsi-v-front-porch = <16>;
 		qcom,mdss-dsi-v-pulse-width = <8>;
+		qcom,mdss-dsi-bl-pmic-control-type = "bl_ctrl_wled";
+		qcom,mdss-dsi-bl-min-level = <1>;
+		qcom,mdss-dsi-bl-max-level = <4095>;
 		qcom,mdss-dsi-on-command = [
 			39 01 00 00 01 00 06 f0 55 aa 52 08 00
 			15 01 00 00 01 00 02 c0 0d
