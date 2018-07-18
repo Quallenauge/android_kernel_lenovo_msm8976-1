@@ -279,7 +279,9 @@ static int mdss_livedisplay_update_locked(struct mdss_dsi_ctrl_pdata *ctrl_pdata
 	kfree(cmd_buf);
 
 	// Restore saved RGB settings
-	mdss_livedisplay_set_rgb_locked(mlc->mfd);
+	if (mlc->mfd){
+		mdss_livedisplay_set_rgb_locked(mlc->mfd);
+	}
 
 	return ret;
 }
@@ -297,9 +299,6 @@ int mdss_livedisplay_update(struct mdss_dsi_ctrl_pdata *ctrl_pdata,
 
 	mlc = pinfo->livedisplay;
 	if (mlc == NULL)
-		return -ENODEV;
-
-	if (mlc->mfd == NULL)
 		return -ENODEV;
 
 	mutex_lock(&mlc->lock);
